@@ -56,6 +56,7 @@ class _ProdukFormState extends State<ProdukForm> {
                 _kodeProdukTextField(),
                 _namaProdukTextField(),
                 _hargaProdukTextField(),
+                const SizedBox(height: 10),
                 _buttonSubmit()
               ],
             ),
@@ -112,8 +113,14 @@ class _ProdukFormState extends State<ProdukForm> {
 
 //Membuat Tombol Simpan/Ubah
   Widget _buttonSubmit() {
-    return OutlinedButton(
-        child: Text(tombolSubmit),
+    return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: const Color(0xFFE1AFD1),
+        ),
+        child: Text(
+          tombolSubmit,
+          style: const TextStyle(color: Colors.white),
+        ),
         onPressed: () {
           var validate = _formKey.currentState!.validate();
           if (validate) {

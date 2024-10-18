@@ -36,6 +36,7 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
                 _emailTextField(),
                 _passwordTextField(),
                 _passwordKonfirmasiTextField(),
+                const SizedBox(height: 10),
                 _buttonRegistrasi()
               ],
             ),
@@ -119,13 +120,21 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
 //Membuat Tombol Registrasi
   Widget _buttonRegistrasi() {
     return ElevatedButton(
-        child: const Text("Registrasi"),
-        onPressed: () {
-          var validate = _formKey.currentState!.validate();
-          if (validate) {
-            if (!_isLoading) _submit();
-          }
-        });
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFFE1AFD1),
+        // minimumSize: const Size.fromHeight(50)
+      ),
+      onPressed: () {
+        var validate = _formKey.currentState!.validate();
+        if (validate) {
+          if (!_isLoading) _submit();
+        }
+      },
+      child: const Text(
+        "Registrasi",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
   }
 
   void _submit() {

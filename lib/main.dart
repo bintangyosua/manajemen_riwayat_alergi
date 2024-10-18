@@ -41,11 +41,13 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: page,
       theme: ThemeData(
+          fontFamily: 'Calibri',
           primarySwatch: Colors.blue,
           appBarTheme: const AppBarTheme(
               backgroundColor: Color.fromRGBO(120, 157, 188, 1),
               foregroundColor: Colors.white,
-              elevation: 4.0)),
+              elevation: 4.0),
+          scaffoldBackgroundColor: const Color(0xFFF5F5F7)),
     );
   }
 }

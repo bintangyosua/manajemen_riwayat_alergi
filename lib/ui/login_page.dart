@@ -34,9 +34,12 @@ class _LoginPageState extends State<LoginPage> {
                     style: Theme.of(context).textTheme.bodyMedium),
                 _emailTextField(),
                 _passwordTextField(),
+                const SizedBox(
+                  height: 10,
+                ),
                 _buttonLogin(),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 _menuRegistrasi()
               ],
@@ -83,13 +86,21 @@ class _LoginPageState extends State<LoginPage> {
 //Membuat Tombol Login
   Widget _buttonLogin() {
     return ElevatedButton(
-        child: const Text("Login"),
-        onPressed: () {
-          var validate = _formKey.currentState!.validate();
-          if (validate) {
-            if (!_isLoading) _submit();
-          }
-        });
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFFE1AFD1),
+        // minimumSize: const Size.fromHeight(50)
+      ),
+      onPressed: () {
+        var validate = _formKey.currentState!.validate();
+        if (validate) {
+          if (!_isLoading) _submit();
+        }
+      },
+      child: const Text(
+        "Login",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
   }
 
   void _submit() {

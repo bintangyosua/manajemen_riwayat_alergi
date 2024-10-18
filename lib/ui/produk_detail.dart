@@ -43,6 +43,9 @@ class _ProdukDetailState extends State<ProdukDetail> {
               subtitle: const Text(
                   'Tingkat keparahan reaksi, biasanya dalam skala 1 hingga 5, di mana 1 adalah ringan dan 5 adalah sangat serius.'),
             ),
+            const SizedBox(
+              height: 10,
+            ),
             _tombolHapusEdit()
           ],
         ),
@@ -55,23 +58,36 @@ class _ProdukDetailState extends State<ProdukDetail> {
       mainAxisSize: MainAxisSize.min,
       children: [
 // Tombol Edit
-        OutlinedButton(
-          child: const Text("EDIT"),
+        ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: WidgetStateProperty.all(const Color(0xFFAD88C6)),
+          ),
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => ProdukForm(
-                  produk: widget.produk!,
+                  produk: widget.produk,
                 ),
               ),
             );
           },
+          child: const Text(
+            "Edit",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
+        const SizedBox(width: 10),
 // Tombol Hapus
-        OutlinedButton(
-          child: const Text("DELETE"),
+        ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor:
+                  WidgetStateProperty.all(const Color(0xFFE1AFD1))),
           onPressed: () => confirmHapus(),
+          child: const Text(
+            "Delete",
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ],
     );
@@ -82,10 +98,16 @@ class _ProdukDetailState extends State<ProdukDetail> {
       content: const Text("Yakin ingin menghapus data ini?"),
       actions: [
 //tombol hapus
-        OutlinedButton(
-          child: const Text("Ya"),
+        ElevatedButton(
+          style: ButtonStyle(
+              backgroundColor:
+                  WidgetStateProperty.all(const Color(0xFFF05A7E))),
+          child: const Text(
+            "Ya",
+            style: TextStyle(color: Colors.white),
+          ),
           onPressed: () {
-            ProdukBloc.deleteProduk(id: widget.produk!.id!).then(
+            ProdukBloc.deleteProduk(id: widget.produk.id!).then(
                 (value) => {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const ProdukPage()))

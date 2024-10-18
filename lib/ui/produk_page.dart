@@ -95,6 +95,7 @@ class ItemProduk extends StatelessWidget {
                     )));
       },
       child: Card(
+        color: Colors.white,
         child: ListTile(
           title: Text(produk.allergen!),
           subtitle: Text(produk.reaction.toString()),
