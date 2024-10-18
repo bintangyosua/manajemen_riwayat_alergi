@@ -5,7 +5,7 @@ class ApiUrl {
   static const String listProduk = baseUrl + '/kesehatan/riwayat_alergi';
   static const String createProduk = baseUrl + '/kesehatan/riwayat_alergi';
   static String updateProduk(int id) {
-    return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString();
+    return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString() + '/update';
   }
 
   static String showProduk(int id) {
@@ -13,6 +13,6 @@ class ApiUrl {
   }
 
   static String deleteProduk(int id) {
-    return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString();
+    return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString() + '/delete';
   }
 }

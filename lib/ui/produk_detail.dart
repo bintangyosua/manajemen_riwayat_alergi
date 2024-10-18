@@ -24,15 +24,15 @@ class _ProdukDetailState extends State<ProdukDetail> {
         child: Column(
           children: [
             Text(
-              "Kode : ${widget.produk!.kodeProduk}",
+              "Kode : ${widget.produk!.allergen}",
               style: const TextStyle(fontSize: 20.0),
             ),
             Text(
-              "Nama : ${widget.produk!.namaProduk}",
+              "Nama : ${widget.produk!.reaction}",
               style: const TextStyle(fontSize: 18.0),
             ),
             Text(
-              "Harga : Rp. ${widget.produk!.hargaProduk.toString()}",
+              "Harga : Rp. ${widget.produk!.severity_scale.toString()}",
               style: const TextStyle(fontSize: 18.0),
             ),
             _tombolHapusEdit()
@@ -77,7 +77,7 @@ class _ProdukDetailState extends State<ProdukDetail> {
         OutlinedButton(
           child: const Text("Ya"),
           onPressed: () {
-            ProdukBloc.deleteProduk(id: int.parse(widget.produk!.id!)).then(
+            ProdukBloc.deleteProduk(id: widget.produk!.id!).then(
                 (value) => {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const ProdukPage()))

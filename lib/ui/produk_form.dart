@@ -31,10 +31,10 @@ class _ProdukFormState extends State<ProdukForm> {
       setState(() {
         judul = "UBAH PRODUK";
         tombolSubmit = "UBAH";
-        _kodeProdukTextboxController.text = widget.produk!.kodeProduk!;
-        _namaProdukTextboxController.text = widget.produk!.namaProduk!;
+        _kodeProdukTextboxController.text = widget.produk!.allergen!;
+        _namaProdukTextboxController.text = widget.produk!.reaction!;
         _hargaProdukTextboxController.text =
-            widget.produk!.hargaProduk.toString();
+            widget.produk!.severity_scale.toString();
       });
     } else {
       judul = "TAMBAH PRODUK";
@@ -135,9 +135,9 @@ class _ProdukFormState extends State<ProdukForm> {
       _isLoading = true;
     });
     Produk createProduk = Produk(id: null);
-    createProduk.kodeProduk = _kodeProdukTextboxController.text;
-    createProduk.namaProduk = _namaProdukTextboxController.text;
-    createProduk.hargaProduk = int.parse(_hargaProdukTextboxController.text);
+    createProduk.allergen = _kodeProdukTextboxController.text;
+    createProduk.reaction = _namaProdukTextboxController.text;
+    createProduk.severity_scale = int.parse(_hargaProdukTextboxController.text);
     ProdukBloc.addProduk(produk: createProduk).then((value) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => const ProdukPage()));
@@ -158,9 +158,9 @@ class _ProdukFormState extends State<ProdukForm> {
       _isLoading = true;
     });
     Produk updateProduk = Produk(id: widget.produk!.id!);
-    updateProduk.kodeProduk = _kodeProdukTextboxController.text;
-    updateProduk.namaProduk = _namaProdukTextboxController.text;
-    updateProduk.hargaProduk = int.parse(_hargaProdukTextboxController.text);
+    updateProduk.allergen = _kodeProdukTextboxController.text;
+    updateProduk.reaction = _namaProdukTextboxController.text;
+    updateProduk.severity_scale = int.parse(_hargaProdukTextboxController.text);
     ProdukBloc.updateProduk(produk: updateProduk).then((value) {
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => const ProdukPage()));

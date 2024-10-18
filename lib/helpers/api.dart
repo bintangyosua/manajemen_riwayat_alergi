@@ -13,7 +13,6 @@ class Api {
       var response = await http.post(Uri.parse(url),
           body: data,
           headers: {HttpHeaders.authorizationHeader: "Bearer $token"});
-      print(response);
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -75,6 +74,7 @@ class Api {
         throw InvalidInputException(response.body.toString());
       case 500:
       default:
+        print(response.body);
         throw FetchDataException(
             'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
     }

@@ -16,12 +16,12 @@ class ProdukBloc {
     return produks;
   }
 
-  static Future addProduk({Produk? produk}) async {
+  static Future addProduk({required Produk produk}) async {
     String apiUrl = ApiUrl.createProduk;
     var body = {
-      "kode_produk": produk!.kodeProduk,
-      "nama_produk": produk.namaProduk,
-      "harga": produk.hargaProduk.toString()
+      "allergen": produk.allergen,
+      "reaction": produk.reaction,
+      "severity_scale": produk.severity_scale.toString()
     };
     var response = await Api().post(apiUrl, body);
     var jsonObj = json.decode(response.body);
@@ -29,12 +29,12 @@ class ProdukBloc {
   }
 
   static Future updateProduk({required Produk produk}) async {
-    String apiUrl = ApiUrl.updateProduk(int.parse(produk.id!));
+    String apiUrl = ApiUrl.updateProduk(produk.id!);
     print(apiUrl);
     var body = {
-      "kode_produk": produk.kodeProduk,
-      "nama_produk": produk.namaProduk,
-      "harga": produk.hargaProduk.toString()
+      "allergen": produk.allergen,
+      "reaction": produk.reaction,
+      "severity_scale": produk.severity_scale.toString()
     };
     print("Body : $body");
     var response = await Api().put(apiUrl, jsonEncode(body));

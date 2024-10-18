@@ -17,7 +17,7 @@ class _ProdukPageState extends State<ProdukPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Produk'),
+        title: const Text('Daftar Riwayat Alergi'),
         actions: [
           Padding(
               padding: const EdgeInsets.only(right: 20.0),
@@ -31,6 +31,7 @@ class _ProdukPageState extends State<ProdukPage> {
         ],
       ),
       drawer: Drawer(
+        backgroundColor: Colors.green[300],
         child: ListView(
           children: [
             ListTile(
@@ -95,8 +96,8 @@ class ItemProduk extends StatelessWidget {
       },
       child: Card(
         child: ListTile(
-          title: Text(produk.namaProduk!),
-          subtitle: Text(produk.hargaProduk.toString()),
+          title: Text(produk.allergen!),
+          subtitle: Text(produk.reaction.toString()),
         ),
       ),
     );

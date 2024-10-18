@@ -1,14 +1,14 @@
 class Produk {
-  String? id;
-  String? kodeProduk;
-  String? namaProduk;
-  var hargaProduk;
-  Produk({this.id, this.kodeProduk, this.namaProduk, this.hargaProduk});
+  int? id;
+  String? allergen;
+  String? reaction;
+  var severity_scale;
+  Produk({this.id, this.allergen, this.reaction, this.severity_scale});
   factory Produk.fromJson(Map<String, dynamic> obj) {
     return Produk(
         id: obj['id'],
-        kodeProduk: obj['kode_produk'],
-        namaProduk: obj['nama_produk'],
-        hargaProduk: obj['harga']);
+        allergen: obj['allergen'],
+        reaction: obj['reaction'],
+        severity_scale: obj['severity_scale']);
   }
 }
