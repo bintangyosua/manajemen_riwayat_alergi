@@ -2,17 +2,17 @@ class ApiUrl {
   static const String baseUrl = 'http://103.196.155.42/api';
   static const String registrasi = baseUrl + '/registrasi';
   static const String login = baseUrl + '/login';
-  static const String listProduk = baseUrl + '/kesehatan/riwayat_alergi';
-  static const String createProduk = baseUrl + '/kesehatan/riwayat_alergi';
-  static String updateProduk(int id) {
+  static const String listAlergi = baseUrl + '/kesehatan/riwayat_alergi';
+  static const String createAlergi = baseUrl + '/kesehatan/riwayat_alergi';
+  static String updateAlergi(int id) {
     return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString() + '/update';
   }
 
-  static String showProduk(int id) {
+  static String showAlergi(int id) {
     return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString();
   }
 
-  static String deleteProduk(int id) {
+  static String deleteAlergi(int id) {
     return baseUrl + '/kesehatan/riwayat_alergi/' + id.toString() + '/delete';
   }
 }

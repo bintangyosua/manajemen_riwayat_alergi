@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:manajemen_riwayat_alergi/bloc/login_bloc.dart';
 import 'package:manajemen_riwayat_alergi/helpers/user_info.dart';
-import 'package:manajemen_riwayat_alergi/ui/produk_page.dart';
+import 'package:manajemen_riwayat_alergi/ui/alergi_page.dart';
 import 'package:manajemen_riwayat_alergi/ui/registrasi_page.dart';
 import 'package:manajemen_riwayat_alergi/widget/warning_dialog.dart';
 
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
         await UserInfo().setToken(value.token.toString());
         await UserInfo().setUserID(int.parse(value.userID.toString()));
         Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const ProdukPage()));
+            MaterialPageRoute(builder: (context) => const AlergiPage()));
       } else {
         showDialog(
             context: context,

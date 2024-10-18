@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:manajemen_riwayat_alergi/bloc/logout_bloc.dart';
-import 'package:manajemen_riwayat_alergi/bloc/produk_bloc.dart';
-import 'package:manajemen_riwayat_alergi/model/produk.dart';
+import 'package:manajemen_riwayat_alergi/bloc/alergi_bloc.dart';
+import 'package:manajemen_riwayat_alergi/model/alergi.dart';
 import 'package:manajemen_riwayat_alergi/ui/login_page.dart';
-import 'package:manajemen_riwayat_alergi/ui/produk_detail.dart';
-import 'package:manajemen_riwayat_alergi/ui/produk_form.dart';
+import 'package:manajemen_riwayat_alergi/ui/alergi_detail.dart';
+import 'package:manajemen_riwayat_alergi/ui/alergi_form.dart';
 
-class ProdukPage extends StatefulWidget {
-  const ProdukPage({Key? key}) : super(key: key);
+class AlergiPage extends StatefulWidget {
+  const AlergiPage({Key? key}) : super(key: key);
   @override
-  _ProdukPageState createState() => _ProdukPageState();
+  _AlergiPageState createState() => _AlergiPageState();
 }
 
-class _ProdukPageState extends State<ProdukPage> {
+class _AlergiPageState extends State<AlergiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +25,7 @@ class _ProdukPageState extends State<ProdukPage> {
                 child: const Icon(Icons.add, size: 26.0),
                 onTap: () async {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProdukForm()));
+                      MaterialPageRoute(builder: (context) => AlergiForm()));
                 },
               ))
         ],
@@ -49,11 +49,11 @@ class _ProdukPageState extends State<ProdukPage> {
         ),
       ),
       body: FutureBuilder<List>(
-        future: ProdukBloc.getProduks(),
+        future: AlergiBloc.getAlergis(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
-              ? ListProduk(
+              ? ListAlergi(
                   list: snapshot.data,
                 )
               : const Center(
@@ -65,24 +65,24 @@ class _ProdukPageState extends State<ProdukPage> {
   }
 }
 
-class ListProduk extends StatelessWidget {
+class ListAlergi extends StatelessWidget {
   final List? list;
-  const ListProduk({Key? key, this.list}) : super(key: key);
+  const ListAlergi({Key? key, this.list}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: list == null ? 0 : list!.length,
         itemBuilder: (context, i) {
-          return ItemProduk(
-            produk: list![i],
+          return ItemAlergi(
+            alergi: list![i],
           );
         });
   }
 }
 
-class ItemProduk extends StatelessWidget {
-  final Produk produk;
-  const ItemProduk({Key? key, required this.produk}) : super(key: key);
+class ItemAlergi extends StatelessWidget {
+  final Alergi alergi;
+  const ItemAlergi({Key? key, required this.alergi}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -90,15 +90,15 @@ class ItemProduk extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProdukDetail(
-                      produk: produk,
+                builder: (context) => AlergiDetail(
+                      alergi: alergi,
                     )));
       },
       child: Card(
         color: Colors.white,
         child: ListTile(
-          title: Text(produk.allergen!),
-          subtitle: Text(produk.reaction.toString()),
+          title: Text(alergi.allergen!),
+          subtitle: Text(alergi.reaction.toString()),
         ),
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:manajemen_riwayat_alergi/helpers/user_info.dart';
 import 'package:manajemen_riwayat_alergi/ui/login_page.dart';
-import 'package:manajemen_riwayat_alergi/ui/produk_page.dart';
+import 'package:manajemen_riwayat_alergi/ui/alergi_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
     var token = await UserInfo().getToken();
     if (token != null) {
       setState(() {
-        page = const ProdukPage();
+        page = const AlergiPage();
       });
     } else {
       setState(() {

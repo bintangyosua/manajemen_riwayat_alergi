@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:manajemen_riwayat_alergi/bloc/produk_bloc.dart';
-import 'package:manajemen_riwayat_alergi/model/produk.dart';
-import 'package:manajemen_riwayat_alergi/ui/produk_page.dart';
+import 'package:manajemen_riwayat_alergi/bloc/alergi_bloc.dart';
+import 'package:manajemen_riwayat_alergi/model/alergi.dart';
+import 'package:manajemen_riwayat_alergi/ui/alergi_page.dart';
 import 'package:manajemen_riwayat_alergi/widget/warning_dialog.dart';
 
 // ignore: must_be_immutable
-class ProdukForm extends StatefulWidget {
-  Produk? produk;
-  ProdukForm({Key? key, this.produk}) : super(key: key);
+class AlergiForm extends StatefulWidget {
+  Alergi? alergi;
+  AlergiForm({Key? key, this.alergi}) : super(key: key);
   @override
-  _ProdukFormState createState() => _ProdukFormState();
+  _AlergiFormState createState() => _AlergiFormState();
 }
 
-class _ProdukFormState extends State<ProdukForm> {
+class _AlergiFormState extends State<AlergiForm> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-  String judul = "TAMBAH PRODUK";
-  String tombolSubmit = "SIMPAN";
-  final _kodeProdukTextboxController = TextEditingController();
-  final _namaProdukTextboxController = TextEditingController();
-  final _hargaProdukTextboxController = TextEditingController();
+  String judul = "Tambah Riwayat Alergi";
+  String tombolSubmit = "Simpan";
+  final _kodeAlergiTextboxController = TextEditingController();
+  final _namaAlergiTextboxController = TextEditingController();
+  final _hargaAlergiTextboxController = TextEditingController();
   @override
   void initState() {
     super.initState();
@@ -27,17 +27,17 @@ class _ProdukFormState extends State<ProdukForm> {
   }
 
   isUpdate() {
-    if (widget.produk != null) {
+    if (widget.alergi != null) {
       setState(() {
-        judul = "Ubah Riwayat Penyakit";
+        judul = "Ubah Riwayat Alergi";
         tombolSubmit = "Ubah";
-        _kodeProdukTextboxController.text = widget.produk!.allergen!;
-        _namaProdukTextboxController.text = widget.produk!.reaction!;
-        _hargaProdukTextboxController.text =
-            widget.produk!.severity_scale.toString();
+        _kodeAlergiTextboxController.text = widget.alergi!.allergen!;
+        _namaAlergiTextboxController.text = widget.alergi!.reaction!;
+        _hargaAlergiTextboxController.text =
+            widget.alergi!.severity_scale.toString();
       });
     } else {
-      judul = "Tambah Riwayat Penyakit";
+      judul = "Tambah Riwayat Alergi";
       tombolSubmit = "Simpan";
     }
   }
@@ -53,9 +53,9 @@ class _ProdukFormState extends State<ProdukForm> {
             key: _formKey,
             child: Column(
               children: [
-                _kodeProdukTextField(),
-                _namaProdukTextField(),
-                _hargaProdukTextField(),
+                _kodeAlergiTextField(),
+                _namaAlergiTextField(),
+                _hargaAlergiTextField(),
                 const SizedBox(height: 10),
                 _buttonSubmit()
               ],
@@ -66,42 +66,42 @@ class _ProdukFormState extends State<ProdukForm> {
     );
   }
 
-//Membuat Textbox Kode Produk
-  Widget _kodeProdukTextField() {
+//Membuat Textbox Kode Alergi
+  Widget _kodeAlergiTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Kode Produk"),
+      decoration: const InputDecoration(labelText: "Kode Alergi"),
       keyboardType: TextInputType.text,
-      controller: _kodeProdukTextboxController,
+      controller: _kodeAlergiTextboxController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Kode Produk harus diisi";
+          return "Kode Alergi harus diisi";
         }
         return null;
       },
     );
   }
 
-//Membuat Textbox Nama Produk
-  Widget _namaProdukTextField() {
+//Membuat Textbox Nama Alergi
+  Widget _namaAlergiTextField() {
     return TextFormField(
-      decoration: const InputDecoration(labelText: "Nama Produk"),
+      decoration: const InputDecoration(labelText: "Nama Alergi"),
       keyboardType: TextInputType.text,
-      controller: _namaProdukTextboxController,
+      controller: _namaAlergiTextboxController,
       validator: (value) {
         if (value!.isEmpty) {
-          return "Nama Produk harus diisi";
+          return "Nama Alergi harus diisi";
         }
         return null;
       },
     );
   }
 
-//Membuat Textbox Harga Produk
-  Widget _hargaProdukTextField() {
+//Membuat Textbox Harga Alergi
+  Widget _hargaAlergiTextField() {
     return TextFormField(
       decoration: const InputDecoration(labelText: "Harga"),
       keyboardType: TextInputType.number,
-      controller: _hargaProdukTextboxController,
+      controller: _hargaAlergiTextboxController,
       validator: (value) {
         if (value!.isEmpty) {
           return "Harga harus diisi";
@@ -125,11 +125,11 @@ class _ProdukFormState extends State<ProdukForm> {
           var validate = _formKey.currentState!.validate();
           if (validate) {
             if (!_isLoading) {
-              if (widget.produk != null) {
-//kondisi update produk
+              if (widget.alergi != null) {
+//kondisi update alergi
                 ubah();
               } else {
-//kondisi tambah produk
+//kondisi tambah alergi
                 simpan();
               }
             }
@@ -141,13 +141,13 @@ class _ProdukFormState extends State<ProdukForm> {
     setState(() {
       _isLoading = true;
     });
-    Produk createProduk = Produk(id: null);
-    createProduk.allergen = _kodeProdukTextboxController.text;
-    createProduk.reaction = _namaProdukTextboxController.text;
-    createProduk.severity_scale = int.parse(_hargaProdukTextboxController.text);
-    ProdukBloc.addProduk(produk: createProduk).then((value) {
+    Alergi createAlergi = Alergi(id: null);
+    createAlergi.allergen = _kodeAlergiTextboxController.text;
+    createAlergi.reaction = _namaAlergiTextboxController.text;
+    createAlergi.severity_scale = int.parse(_hargaAlergiTextboxController.text);
+    AlergiBloc.addAlergi(alergi: createAlergi).then((value) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => const ProdukPage()));
+          builder: (BuildContext context) => const AlergiPage()));
     }, onError: (error) {
       showDialog(
           context: context,
@@ -164,13 +164,13 @@ class _ProdukFormState extends State<ProdukForm> {
     setState(() {
       _isLoading = true;
     });
-    Produk updateProduk = Produk(id: widget.produk!.id!);
-    updateProduk.allergen = _kodeProdukTextboxController.text;
-    updateProduk.reaction = _namaProdukTextboxController.text;
-    updateProduk.severity_scale = int.parse(_hargaProdukTextboxController.text);
-    ProdukBloc.updateProduk(produk: updateProduk).then((value) {
+    Alergi updateAlergi = Alergi(id: widget.alergi!.id!);
+    updateAlergi.allergen = _kodeAlergiTextboxController.text;
+    updateAlergi.reaction = _namaAlergiTextboxController.text;
+    updateAlergi.severity_scale = int.parse(_hargaAlergiTextboxController.text);
+    AlergiBloc.updateAlergi(alergi: updateAlergi).then((value) {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => const ProdukPage()));
+          builder: (BuildContext context) => const AlergiPage()));
     }, onError: (error) {
       showDialog(
           context: context,
