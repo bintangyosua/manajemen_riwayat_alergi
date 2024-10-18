@@ -7,6 +7,8 @@ NIM: H1D022077 <br>
 Shift Lama: D <br>
 Shift Baru: F <br>
 
+<a href='penjelasan.pdf'>Penjelasan</a>
+
 Ketentuan: <br>
 ![](/snapshots/ketentuan.jpg)
 
