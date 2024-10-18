@@ -7,6 +7,9 @@ NIM: H1D022077 <br>
 Shift Lama: D <br>
 Shift Baru: F <br>
 
+Ketentuan: <br>
+![](/snapshots/ketentuan.jpg)
+
 ## Table of Contents
 
 - [manajemen_riwayat_alergi](#manajemen_riwayat_alergi)
