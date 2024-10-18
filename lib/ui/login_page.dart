@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 Text(
-                    'Silahkan login terlebih dahulu untuk masuk ke Toko Minuet',
+                    'Silahkan login terlebih dahulu untuk masuk ke Aplikasi Manajemen Riwayat Alergi',
                     style: Theme.of(context).textTheme.bodyMedium),
                 _emailTextField(),
                 _passwordTextField(),

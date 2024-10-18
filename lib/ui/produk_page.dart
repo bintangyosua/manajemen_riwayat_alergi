@@ -31,7 +31,7 @@ class _ProdukPageState extends State<ProdukPage> {
         ],
       ),
       drawer: Drawer(
-        backgroundColor: Colors.green[300],
+        backgroundColor: const Color.fromRGBO(165, 182, 141, 1),
         child: ListView(
           children: [
             ListTile(

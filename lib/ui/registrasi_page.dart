@@ -30,7 +30,7 @@ class _RegistrasiPageState extends State<RegistrasiPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                    'Silahkan registrasi terlebih dahulu untuk mendaftarkan diri ke Toko Minuet',
+                    'Silahkan registrasi terlebih dahulu untuk mendaftarkan diri ke Aplikasi Manajemen Riwayat Alergi',
                     style: Theme.of(context).textTheme.bodyMedium),
                 _namaTextField(),
                 _emailTextField(),

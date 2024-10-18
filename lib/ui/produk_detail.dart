@@ -7,8 +7,8 @@ import 'package:manajemen_riwayat_alergi/widget/warning_dialog.dart';
 
 // ignore: must_be_immutable
 class ProdukDetail extends StatefulWidget {
-  Produk? produk;
-  ProdukDetail({Key? key, this.produk}) : super(key: key);
+  Produk produk;
+  ProdukDetail({Key? key, required this.produk}) : super(key: key);
   @override
   _ProdukDetailState createState() => _ProdukDetailState();
 }
@@ -18,22 +18,30 @@ class _ProdukDetailState extends State<ProdukDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Detail Produk'),
+        title: const Text('Detail Riwayat Penyakit'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text(
-              "Kode : ${widget.produk!.allergen}",
-              style: const TextStyle(fontSize: 20.0),
+            ListTile(
+              leading: const Icon(Icons.local_hospital),
+              title:
+                  Text('Allergen: ${widget.produk.allergen}' ?? 'Tanpa nama'),
+              subtitle: const Text('Nama alergen yang menyebabkan reaksi'),
             ),
-            Text(
-              "Nama : ${widget.produk!.reaction}",
-              style: const TextStyle(fontSize: 18.0),
+            ListTile(
+              leading: const Icon(Icons.sick),
+              title:
+                  Text('Reaction: ${widget.produk.reaction}' ?? 'Tanpa nama'),
+              subtitle: const Text(
+                  'Jenis reaksi yang terjadi akibat kontak dengan alergen.'),
             ),
-            Text(
-              "Harga : Rp. ${widget.produk!.severity_scale.toString()}",
-              style: const TextStyle(fontSize: 18.0),
+            ListTile(
+              leading: const Icon(Icons.numbers),
+              title: Text(
+                  'Severity Scale: ${widget.produk.severity_scale.toString()}'),
+              subtitle: const Text(
+                  'Tingkat keparahan reaksi, biasanya dalam skala 1 hingga 5, di mana 1 adalah ringan dan 5 adalah sangat serius.'),
             ),
             _tombolHapusEdit()
           ],

@@ -29,16 +29,16 @@ class _ProdukFormState extends State<ProdukForm> {
   isUpdate() {
     if (widget.produk != null) {
       setState(() {
-        judul = "UBAH PRODUK";
-        tombolSubmit = "UBAH";
+        judul = "Ubah Riwayat Penyakit";
+        tombolSubmit = "Ubah";
         _kodeProdukTextboxController.text = widget.produk!.allergen!;
         _namaProdukTextboxController.text = widget.produk!.reaction!;
         _hargaProdukTextboxController.text =
             widget.produk!.severity_scale.toString();
       });
     } else {
-      judul = "TAMBAH PRODUK";
-      tombolSubmit = "SIMPAN";
+      judul = "Tambah Riwayat Penyakit";
+      tombolSubmit = "Simpan";
     }
   }
 
