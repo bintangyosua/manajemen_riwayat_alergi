@@ -127,7 +127,6 @@ class _LoginPageState extends State<LoginPage> {
                 ));
       }
     }, onError: (error) {
-      print(error);
       showDialog(
           context: context,
           barrierDismissible: false,

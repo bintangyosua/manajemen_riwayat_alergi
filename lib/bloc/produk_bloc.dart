@@ -30,13 +30,11 @@ class ProdukBloc {
 
   static Future updateProduk({required Produk produk}) async {
     String apiUrl = ApiUrl.updateProduk(produk.id!);
-    print(apiUrl);
     var body = {
       "allergen": produk.allergen,
       "reaction": produk.reaction,
       "severity_scale": produk.severity_scale.toString()
     };
-    print("Body : $body");
     var response = await Api().put(apiUrl, jsonEncode(body));
     var jsonObj = json.decode(response.body);
     return jsonObj['status'];
